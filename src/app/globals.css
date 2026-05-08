@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Subtle background gradient for hero (instead of SVG) */
+.hero-bg {
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Marquee animation for trusted companies */
+@keyframes scrollCompanies {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scrollCompanies {
+  animation: scrollCompanies 25s linear infinite;
+}
+
+/* Speed up slightly on mobile for smoother feel */
+@media (max-width: 640px) {
+  .animate-scrollCompanies {
+    animation-duration: 20s;
+  }
+}
