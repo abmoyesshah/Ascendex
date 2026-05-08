@@ -1,4 +1,4 @@
-import PackageCard from '@/components/package-card';
+import PackageCard from '../../components/package-card';
 
 const packages = [
   {

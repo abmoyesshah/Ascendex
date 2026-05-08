@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import SidebarHeader from '@/components/sidebar-header';
+import SidebarHeader from '../../components/sidebar-header';
 
 function OverviewPage() {
   return <div className="p-6"><h2 className="text-xl font-bold">Overview</h2><p>SEO performance at a glance.</p></div>;
