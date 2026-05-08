@@ -9,7 +9,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-white pt-24 pb-20">
         {/* Background dancing lines */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden mt-0">
           <svg
             className="absolute top-0 left-0 w-full h-full"
             viewBox="0 0 1440 700"
@@ -52,7 +52,7 @@ export default function Home() {
 
             {/* Bottom curve */}
             <path
-              d="M950 0C1080 110 1220 140 1440 40"
+              d="M950 0C1080 110 1220 740 1440 40"
               stroke="url(#lineGradient)"
               strokeWidth="4"
               fill="none"
@@ -154,168 +154,3 @@ export default function Home() {
     </>
   );
 }
-
-// import Image from "next/image";
-// import Link from "next/link";
-// import HeroSearch from "../components/hero-search";
-
-// export default function Home() {
-//   return (
-//     <>
-//       {/* Hero Section with dancing line */}
-//       <section
-//         id="home"
-//         className="relative pt-20 pb-12 overflow-hidden bg-white"
-//       >
-//         {/* SVG Background Curve */}
-//         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-//           <svg
-//             className="absolute inset-0 w-full h-full"
-//             xmlns="http://www.w3.org/2000/svg"
-//             viewBox="0 0 1440 600"
-//             preserveAspectRatio="none"
-//           >
-//             <defs>
-//               <linearGradient id="heroGradient" x1="0" y1="0" x2="1" y2="1">
-//                 <stop offset="0%" stopColor="#007BFF" />
-//                 <stop offset="50%" stopColor="#3BA9FF" />
-//                 <stop offset="100%" stopColor="#A4D8FF" />
-//               </linearGradient>
-//               <filter
-//                 id="softShadow"
-//                 x="-10%"
-//                 y="-10%"
-//                 width="130%"
-//                 height="130%"
-//               >
-//                 <feDropShadow
-//                   dx="0"
-//                   dy="6"
-//                   stdDeviation="8"
-//                   floodColor="#A4C8FF"
-//                   floodOpacity="0.6"
-//                 />
-//               </filter>
-//             </defs>
-//             <path
-//               d="M0,450 C240,280 480,620 720,450 C960,280 1200,620 1440,320"
-//               stroke="url(#heroGradient)"
-//               strokeWidth="4"
-//               fill="none"
-//               opacity="0.95"
-//               filter="url(#softShadow)"
-//             />
-//           </svg>
-//         </div>
-
-//         <div className="relative max-w-7xl mx-auto px-6">
-//           <p className="text-blue-600 uppercase text-sm font-medium tracking-wide">
-//             SEO Agency
-//           </p>
-//           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mt-2 max-w-5xl">
-//             The #1 SEO agency for fast-growing companies
-//           </h1>
-//           <p className="text-gray-600 text-base sm:text-lg mt-4 max-w-2xl">
-//             We help fast-growing companies dominate search results with
-//             data-driven SEO strategies.
-//           </p>
-
-//           <div className="flex flex-wrap gap-4 mt-8">
-//             <Link
-//               href="/contact"
-//               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition text-center"
-//             >
-//               Contact us
-//             </Link>
-//             <Link
-//               href="/case-studies"
-//               className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition text-center"
-//             >
-//               Case Studies
-//             </Link>
-//           </div>
-
-//           {/* SEARCH BAR (client component) */}
-//           <HeroSearch />
-
-//           {/* Image cluster */}
-//           <div className="relative mt-12 flex justify-center">
-//             <div className="relative mx-auto w-full max-w-5xl">
-//               <Image
-//                 src="/home_1-Picsart-AiImageEnhancer.png"
-//                 alt="Main SEO dashboard"
-//                 width={820}
-//                 height={420}
-//                 className="rounded-2xl shadow-md"
-//                 style={{ width: "100%", height: "auto" }}
-//                 priority
-//               />
-//               <div className="hidden sm:block absolute -top-10 right-20 lg:right-[-30]">
-//                 <Image
-//                   src="/home_2.PNG"
-//                   alt="SEO metrics"
-//                   width={180}
-//                   height={120}
-//                   className="rounded-xl shadow-md"
-//                   style={{ width: "100%", height: "auto" }}
-//                 />
-//               </div>
-//               <div className="hidden sm:block absolute -bottom-10 left-0 lg:left-[-30]">
-//                 <Image
-//                   src="/home_2.PNG"
-//                   alt="SEO analytics"
-//                   width={180}
-//                   height={120}
-//                   className="rounded-xl shadow-md"
-//                   style={{ width: "100%", height: "auto" }}
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Trusted Companies */}
-//       <div className="bg-gray-100 py-12 text-center">
-//         <p className="text-gray-500 mb-6 text-lg">
-//           Trusted by over <span className="text-blue-600 font-bold">100+</span>{" "}
-//           fast-growing companies
-//         </p>
-//         <div className="flex justify-center flex-wrap gap-8">
-//           <Image
-//             src="/company-logo-one.jpg"
-//             alt="Company 1"
-//             width={120}
-//             height={40}
-//             className="h-10 sm:h-12 w-auto rounded-xl shadow-lg"
-//             style={{ width: "auto", height: "auto" }}
-//           />
-//           <Image
-//             src="/company-logo-two.jpg"
-//             alt="Company 2"
-//             width={120}
-//             height={40}
-//             className="h-10 sm:h-12 w-auto rounded-xl shadow-lg"
-//             style={{ width: "auto", height: "auto" }}
-//           />
-//           <Image
-//             src="/company-logo-three.jpg"
-//             alt="Company 3"
-//             width={120}
-//             height={40}
-//             className="h-10 sm:h-12 w-auto rounded-xl shadow-lg"
-//             style={{ width: "auto", height: "auto" }}
-//           />
-//           <Image
-//             src="/company-logo-four.jpg"
-//             alt="Company 4"
-//             width={120}
-//             height={40}
-//             className="h-10 sm:h-12 w-auto rounded-xl shadow-lg"
-//             style={{ width: "auto", height: "auto" }}
-//           />
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
