@@ -29,9 +29,9 @@ export default function HeroSearch() {
   };
 
   return (
-    <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl">
+    <div className="w-full sm:pr-32 md:pr-20 lg:pr-16 xl:pr-14">
       {error && <p className="text-red-500 text-xs sm:text-sm text-center mb-2">{error}</p>}
-      <div className="relative flex items-center bg-white border-2 border-gray-200 hover:border-gray-300 rounded-full overflow-hidden transition-colors shadow-sm">
+      <div className="relative flex items-center  border-2 border-gray-200 hover:border-gray-300 rounded-full overflow-hidden transition-colors">
         <input
           type="text"
           value={url}

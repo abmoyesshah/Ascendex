@@ -55,7 +55,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Companies />
+
+        {/* trusted companies */}
+        <div className="mt-20">
+          <Companies />
+        </div>
+        
       </section>
     </>
   );

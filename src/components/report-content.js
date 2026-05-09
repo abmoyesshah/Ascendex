@@ -125,15 +125,15 @@ export default function ReportContent() {
     <>
       <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-          <Link href="/" className="inline-flex items-center gap-2 text-blue-600 text-xs sm:text-sm font-medium mb-6 sm:mb-8 hover:gap-3 transition">
+          <Link href="/" className="inline-flex items-center gap-2 text-blue-600 text-xs sm:text-sm font-medium mb-4 sm:mb-6 hover:gap-3 transition">
             <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
             Back to Website
           </Link>
 
-          <div className="mb-6 sm:mb-8">
-            <p className="text-blue-600 uppercase text-xs sm:text-sm font-medium tracking-wide mb-2">SEO Report</p>
+          <div className="mb-4">
+            <p className="text-blue-600 uppercase text-xs sm:text-sm font-medium tracking-wide mb-1">SEO Report</p>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">SEO Analysis Report</h1>
-            <p className="text-gray-500 mt-2 text-xs sm:text-sm">{analysis?.url} • {analysis?.pages_analyzed} pages analyzed • {new Date().toLocaleString()}</p>
+            <p className="text-gray-500 mt-1 text-xs sm:text-sm">{analysis?.url} • {analysis?.pages_analyzed} pages analyzed • {new Date().toLocaleString()}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -265,13 +265,30 @@ export default function ReportContent() {
                     <div className="p-3 sm:p-4 bg-gray-50 rounded-lg">
                       <p className="font-semibold text-sm sm:text-base text-gray-800 mb-3 break-all">{page.url}</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 text-xs sm:text-sm text-gray-600">
-                        <p><span className="font-semibold text-gray-800">Score:</span> {page.seo_score}/100</p>
-                        <p><span className="font-semibold text-gray-800">Title:</span> {page.title}</p>
-                        <p className="sm:col-span-2"><span className="font-semibold text-gray-800">Meta Description:</span> {page.meta_description}</p>
-                        <p><span className="font-semibold text-gray-800">Word Count:</span> {page.word_count}</p>
-                        <p><span className="font-semibold text-gray-800">H1 Count:</span> {page.h1_count}</p>
-                        <p><span className="font-semibold text-gray-800">H2 Count:</span> {page.h2_count}</p>
-                        <p><span className="font-semibold text-gray-800">Load Time:</span> {page.load_time} sec</p>
+                        <p><span className="font-semibold text-gray-500">Score:</span>{" "}<span className="font-semibold text-gray-800">{page.seo_score}/100</span></p>
+                        <p><span className="font-semibold text-gray-500">Title:</span>{" "}<span className="font-semibold text-gray-800">{page.title}</span></p>
+                        <p className="sm:col-span-2"><span className="font-semibold text-gray-500">Meta Description:</span>{" "}<span className="font-semibold text-gray-800">{page.meta_description}</span></p>
+                        <p><span className="font-semibold text-gray-500">Word Count:</span>{" "}<span className="font-semibold text-gray-800">{page.word_count}</span></p>
+                        <p><span className="font-semibold text-gray-500">H1 Count:</span>{" "}<span className="font-semibold text-gray-800">{page.h1_count}</span></p>
+                        <p><span className="font-semibold text-gray-500">H2 Count:</span>{" "}<span className="font-semibold text-gray-800">{page.h2_count}</span></p>
+                        <p><span className="font-semibold text-gray-500">H3 Count:</span>{" "}<span className="font-semibold text-gray-800">{page.h3_count}</span></p>
+                        <p><span className="font-semibold text-gray-500">Missing Alt Tags:</span>{" "}<span className="font-semibold text-gray-800">{page.missing_alt_tags}</span></p>
+                        <p><span className="font-semibold text-gray-500">Total Images:</span>{" "}<span className="font-semibold text-gray-800">{page.total_images}</span></p>
+                        <p><span className="font-semibold text-gray-500">Small Images:</span>{" "}<span className="font-semibold text-gray-800">{page.small_images}</span></p>
+                        <p><span className="font-semibold text-gray-500">Large Images:</span>{" "}<span className="font-semibold text-gray-800">{page.large_images}</span></p>
+                        <p><span className="font-semibold text-gray-500">Ideal Images:</span>{" "}<span className="font-semibold text-gray-800">{page.ideal_images}</span></p>
+                        <p><span className="font-semibold text-gray-500">Internal Links:</span>{" "}<span className="font-semibold text-gray-800">{page.internal_links}</span></p>
+                        <p><span className="font-semibold text-gray-500">External Links:</span>{" "}<span className="font-semibold text-gray-800">{page.external_links}</span></p>
+                        <p><span className="font-semibold text-gray-500">Canonical Tag:</span>{" "}<span className="font-semibold text-gray-800">{page.canonical_tag}</span></p>
+                        <p><span className="font-semibold text-gray-500">OpenGraph Tag:</span>{" "}<span className="font-semibold text-gray-800">{page.opengraph_tag}</span></p>
+                        <p><span className="font-semibold text-gray-500">Twitter Tag:</span>{" "}<span className="font-semibold text-gray-800">{page.twitter_tag}</span></p>
+                        <p><span className="font-semibold text-gray-500">Viewport:</span>{" "}<span className="font-semibold text-gray-800">{page.viewport}</span></p>
+                        <p><span className="font-semibold text-gray-500">Robots Meta:</span>{" "}<span className="font-semibold text-gray-800">{page.robots_meta}</span></p>
+                        <p><span className="font-semibold text-gray-500">Schema Types:</span>{" "}<span className="font-semibold text-gray-800">{page.schema_types}</span></p>
+                        <p><span className="font-semibold text-gray-500">Readability Score:</span>{" "}<span className="font-semibold text-gray-800">{page.readability_score}</span></p>
+                        <p><span className="font-semibold text-gray-500">Grammar Errors:</span>{" "}<span className="font-semibold text-gray-800">{page.grammar_errors}</span></p>
+                        <p><span className="font-semibold text-gray-500">Text/HTML Ratio:</span>{" "}<span className="font-semibold text-gray-800">{page.text_html_ratio}</span></p>
+                        <p><span className="font-semibold text-gray-500">Load Time:</span>{" "}<span className="font-semibold text-gray-800">{page.load_time} sec</span></p>
                       </div>
                     </div>
                   );
