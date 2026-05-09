@@ -119,7 +119,7 @@ export default function ReportContent() {
     );
   }
 
-  const scoreColor = analysis?.overall_score >= 80 ? "#10b981" : analysis?.overall_score >= 60 ? "#f59e0b" : "#ef4444";
+  const scoreColor = analysis?.overall_score >= 80 ? "#1447E6" : analysis?.overall_score >= 60 ? "#1447E6" : "#1447E6";
 
   return (
     <>
@@ -138,7 +138,7 @@ export default function ReportContent() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             <div className="lg:col-span-2 h-full">
-              <Card className="h-full flex flex-col">
+              <Card className="h-full flex flex-col overflow-visible">
                 <div className="flex flex-col sm:flex-row justify-between gap-4">
                   <div>
                     <p className="text-blue-500 uppercase text-[10px] sm:text-xs tracking-wide mb-1">Overall SEO Score</p>
@@ -146,6 +146,48 @@ export default function ReportContent() {
                     <p className="text-gray-500 text-xs sm:text-sm mt-1">Based on analysis of {analysis?.pages_analyzed} pages</p>
                   </div>
                   <div className="bg-gray-100 rounded-lg px-3 py-2 text-xs sm:text-sm text-gray-600 self-start">{analysis?.url}</div>
+                </div>
+
+
+
+                <div className="mt-6 sm:mt-8 flex flex-col md:flex-row items-center gap-4 sm:gap-6 flex-1">
+                  <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] flex-shrink-0 mx-auto md:mx-0">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={[
+                            { name: "Score", value: analysis?.overall_score ?? 0 },
+                            { name: "Remaining", value: 100 - (analysis?.overall_score ?? 0) },
+                          ]}
+                          dataKey="value"
+                          nameKey="name"
+                          innerRadius="60%"
+                          outerRadius="90%"
+                          startAngle={90}
+                          endAngle={-270}
+                          paddingAngle={0}
+                          stroke="none"
+                        >
+                          <Cell fill={scoreColor} />
+                          <Cell fill="#e5e7eb" />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="text-center">
+                        <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">{analysis?.overall_score ?? "—"}%</span>
+                        <p className="text-[10px] sm:text-xs md:text-sm text-gray-400">Score</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 grid grid-cols-2 gap-2">
+                    {donut.map((d) => (
+                      <div key={d.name} className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full" style={{ background: d.name === "Score" ? scoreColor : "#e5e7eb" }} />
+                        <span className="text-xs sm:text-sm text-gray-600">{d.name} <strong>{d.value}%</strong></span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-3 sm:gap-4">
@@ -160,33 +202,6 @@ export default function ReportContent() {
                   <div className="bg-blue-50 rounded-xl p-2 sm:p-3 text-center">
                     <p className="text-[10px] sm:text-xs text-gray-500">Suggestions</p>
                     <p className="text-lg sm:text-2xl font-bold text-blue-700">{analysis?.suggestions.length ?? 0}</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 sm:mt-8 flex flex-col md:flex-row items-center gap-4 sm:gap-6 flex-1">
-                  <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px]">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie data={[{ name: "Score", value: analysis?.overall_score ?? 0 }, { name: "Remaining", value: 100 - (analysis?.overall_score ?? 0) }]} dataKey="value" nameKey="name" innerRadius={60} outerRadius={85} startAngle={90} endAngle={-270} paddingAngle={0}>
-                          <Cell fill={scoreColor} />
-                          <Cell fill="#e5e7eb" />
-                        </Pie>
-                      </PieChart>
-                    </ResponsiveContainer>
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="text-center">
-                        <span className="text-2xl sm:text-3xl font-bold text-gray-900">{analysis?.overall_score ?? "—"}%</span>
-                        <p className="text-[10px] sm:text-xs text-gray-400">Score</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex-1 grid grid-cols-2 gap-2">
-                    {donut.map((d) => (
-                      <div key={d.name} className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full" style={{ background: d.name === "Score" ? scoreColor : "#e5e7eb" }} />
-                        <span className="text-xs sm:text-sm text-gray-600">{d.name} <strong>{d.value}%</strong></span>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </Card>
