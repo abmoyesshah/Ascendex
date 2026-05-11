@@ -51,7 +51,7 @@ export default function AeoReport({ data }) {
     <div className="space-y-6">
       <div className="mb-0">
         <p className="text-blue-600 uppercase text-xs sm:text-sm font-medium tracking-wide mb-1">AEO Report</p>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Answer Engine Optimization Report</h1>
+        {/* <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Answer Engine Optimization Report</h1> */}
         <p className="text-gray-500 mt-1 text-xs sm:text-sm">{analysis.pages_analyzed} pages analyzed • {new Date().toLocaleString()}</p>
       </div>
 
@@ -157,7 +157,7 @@ export default function AeoReport({ data }) {
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Top Strengths</h3>
         <ul className="space-y-2 list-disc pl-5 text-sm">
           {analysis.strengths.map((s, i) => (
-            <li key={i}><strong className="text-green-800">{s.title}:</strong> {s.detail}</li>
+            <li key={i}><strong className="text-green-800">{s.title}:</strong> {" "}<span className="text-gray-600">{s.detail}</span></li>
           ))}
         </ul>
       </Card>
@@ -165,7 +165,7 @@ export default function AeoReport({ data }) {
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Critical Issues</h3>
         <ul className="space-y-2 list-disc pl-5 text-sm">
           {analysis.faults.map((f, i) => (
-            <li key={i}><strong className="text-red-800">{f.title}:</strong> {f.detail}</li>
+            <li key={i}><strong className="text-red-800">{f.title}:</strong> {" "}<span className="text-gray-600">{f.detail}</span></li>
           ))}
         </ul>
       </Card>
@@ -173,7 +173,7 @@ export default function AeoReport({ data }) {
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">AI Suggestions</h3>
         <ul className="space-y-2 list-disc pl-5 text-sm">
           {analysis.suggestions.map((s, i) => (
-            <li key={i}><strong className="text-blue-800">{s.title}:</strong> {s.detail}</li>
+            <li key={i}><strong className="text-blue-800">{s.title}:</strong> {" "}<span className="text-gray-600">{s.detail}</span></li>
           ))}
         </ul>
       </Card>

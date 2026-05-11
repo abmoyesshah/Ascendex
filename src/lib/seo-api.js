@@ -2,7 +2,7 @@
  * Analyze SEO for a given URL
  */
 export async function analyzeSEO(url) {
-  const API_URL = "https://emadalikhan-seo-analyzer2.hf.space";
+  const API_URL = "https://syedabdulmoizshah-my-second-ai-agent.hf.space";
   // const API_URL = "http://127.0.0.1:8000";
 
   const fullUrl = url.startsWith("http")

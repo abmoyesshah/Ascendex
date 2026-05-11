@@ -48,7 +48,7 @@ export default function SeoReport({ data }) {
       {/* Header */}
       <div className="mb-0">
         <p className="text-blue-600 uppercase text-xs sm:text-sm font-medium tracking-wide mb-1">SEO Report</p>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">SEO Analysis Report</h1>
+        {/* <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">SEO Analysis Report</h1> */}
         <p className="text-gray-500 mt-1 text-xs sm:text-sm">{analysis?.url} • {analysis?.pages_analyzed} pages analyzed • {new Date().toLocaleString()}</p>
       </div>
 
