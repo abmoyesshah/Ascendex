@@ -23,7 +23,7 @@ export default async function CareersSinglePage({ params }) {
   if (!job) notFound();
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] py-10 sm:py-14 md:py-16 lg:py-20">
+    <div className="min-h-screen bg-white py-10 sm:py-14 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link href="/careers" className="inline-flex items-center gap-2 text-blue-600 text-xs sm:text-sm font-semibold mb-6 sm:mb-8 lg:mb-10 hover:gap-3 transition">
           ← back to careers
@@ -32,9 +32,7 @@ export default async function CareersSinglePage({ params }) {
         <div className="grid lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_360px] gap-8 lg:gap-12 xl:gap-16 items-start">
           <div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6 sm:mb-8">{job.title}</h1>
-            <p className="text-gray-500 leading-7 text-sm sm:text-base md:text-lg max-w-3xl mb-8 sm:mb-10">
-              {job.description}
-            </p>
+            <p className="text-gray-500 leading-7 text-sm sm:text-base md:text-lg max-w-3xl mb-8 sm:mb-10">{job.description}</p>
 
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-14">
               <div className="flex items-center gap-2 sm:gap-3 text-gray-500 text-xs sm:text-sm">

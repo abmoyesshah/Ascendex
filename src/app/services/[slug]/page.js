@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const serviceData = {
-  'keyword-research': { title: 'Keyword Research', description: 'Find the perfect keywords for your SEO strategy.', image: '/seo-dashboard-preview.jpg' },
-  'website-optimization': { title: 'Website Optimization', description: 'Optimize your website for speed, usability, and SEO.', image: '/seo-dashboard-preview.jpg' },
-  'link-building': { title: 'Link Building', description: 'Build high-quality backlinks that increase your domain authority.', image: '/seo-dashboard-preview.jpg' },
-  'content-marketing': { title: 'Content Marketing', description: 'Create engaging content that ranks and converts.', image: '/seo-dashboard-preview.jpg' },
+  'seo': { title: 'Search Engine Optimization', description: 'Dominate Google rankings.', image: '/seo-dashboard-preview.jpg' },
+  'aeo': { title: 'Answer Engine Optimization', description: 'Get featured in answer boxes.', image: '/seo-dashboard-preview.jpg' },
+  'geo': { title: 'Generative Engine Optimization', description: 'Optimise for AI engines.', image: '/seo-dashboard-preview.jpg' },
+  'content-marketing': { title: 'Content Marketing', description: 'Create engaging content.', image: '/seo-dashboard-preview.jpg' },
 };
 
 export async function generateMetadata({ params }) {
@@ -35,9 +35,7 @@ export default async function SingleServicePage({ params }) {
 
         <div className="text-center">
           <p className="text-blue-500 uppercase text-xs sm:text-sm font-medium tracking-wide mb-2 sm:mb-3">{service.title}</p>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
-            {service.title} services
-          </h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">{service.title} services</h1>
           <p className="text-gray-500 max-w-2xl mx-auto mb-6 sm:mb-8 lg:mb-10 text-sm sm:text-base leading-relaxed">{service.description}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 lg:mb-20">
             <button className="bg-blue-600 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium hover:bg-blue-700 transition text-sm sm:text-base">Request a Quote</button>
@@ -62,11 +60,11 @@ export default async function SingleServicePage({ params }) {
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             <div className="bg-gray-50 p-4 sm:p-6 rounded-xl">
               <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-2">Competitor Analysis</h3>
-              <p className="text-gray-600 text-xs sm:text-sm">We analyze your competitors' keyword strategies.</p>
+              <p className="text-gray-600 text-xs sm:text-sm">We analyse competitors strategies.</p>
             </div>
             <div className="bg-gray-50 p-4 sm:p-6 rounded-xl">
               <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-2">Search Intent Mapping</h3>
-              <p className="text-gray-600 text-xs sm:text-sm">We categorize keywords by user intent.</p>
+              <p className="text-gray-600 text-xs sm:text-sm">We map keywords to user intent.</p>
             </div>
           </div>
         </div>

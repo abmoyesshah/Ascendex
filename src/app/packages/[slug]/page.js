@@ -20,7 +20,7 @@ export default async function PackageSinglePage({ params }) {
   if (!pkg) notFound();
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5]">
+    <div className="min-h-screen bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         <Link href="/packages" className="text-blue-600 text-xs sm:text-sm font-semibold mb-8 sm:mb-10 inline-flex items-center gap-2">
           ← Back to Packages

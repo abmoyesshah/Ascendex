@@ -11,14 +11,7 @@ export default function Sparkline({ series, color = "#2563eb" }) {
               <stop offset="100%" stopColor={color} stopOpacity={0.05} />
             </linearGradient>
           </defs>
-          <Area
-            dataKey="y"
-            type="monotone"
-            stroke={color}
-            fill="url(#sparkGradient)"
-            strokeWidth={2}
-            dot={false}
-          />
+          <Area dataKey="y" type="monotone" stroke={color} fill="url(#sparkGradient)" strokeWidth={2} dot={false} />
         </AreaChart>
       </ResponsiveContainer>
     </div>

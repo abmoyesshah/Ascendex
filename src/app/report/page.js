@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ReportTabs from "../../components/ReportTabs";
@@ -11,71 +10,75 @@ function ReportContent() {
   const [seoData, setSeoData] = useState(null);
   const [geoData, setGeoData] = useState(null);
   const [aeoData, setAeoData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);        // only for the very first SEO response
+  const [loadingGeo, setLoadingGeo] = useState(true);
+  const [loadingAeo, setLoadingAeo] = useState(true);
 
   useEffect(() => {
     if (!url) {
-      setError("No URL provided.");
       setLoading(false);
       return;
     }
 
-    async function fetchAll() {
-      try {
-        setLoading(true);
-        // Start SEO and GEO in parallel
-        const [seoResult, geoResult] = await Promise.all([
-          analyzeSEO(url),
-          analyzeGEO(url, { maxPages: 20 }),
-        ]);
+    // 1. SEO – fetch and show immediately
+    console.time("⏱ SEO API");
+    analyzeSEO(url)
+      .then((data) => {
+        console.timeEnd("⏱ SEO API");
+        setSeoData(data);
+      })
+      .catch((e) => {
+        console.timeEnd("⏱ SEO API");
+        setSeoData({ status: "error", message: e.message });
+      })
+      .finally(() => setLoading(false));
 
-        setSeoData(seoResult);
-        setGeoData(geoResult);
+    // 2. GEO – start in parallel
+    console.time("⏱ GEO API");
+    analyzeGEO(url, { maxPages: 20 })
+      .then((data) => {
+        console.timeEnd("⏱ GEO API");
+        setGeoData(data);
+      })
+      .catch((e) => {
+        console.timeEnd("⏱ GEO API");
+        setGeoData({ status: "error", message: e.message });
+      })
+      .finally(() => setLoadingGeo(false));
 
-        // Start AEO (polling)
-        const aeoResult = await analyzeAEO(url, {
-          maxPages: 20,
-          onProgress: (msg) => console.log("AEO:", msg),
-        });
-        setAeoData(aeoResult);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchAll();
+    // 3. AEO – start in parallel (uses the new direct endpoint)
+    console.time("⏱ AEO API");
+    analyzeAEO(url, { maxPages: 20 })
+      .then((data) => {
+        console.timeEnd("⏱ AEO API");
+        setAeoData(data);
+      })
+      .catch((e) => {
+        console.timeEnd("⏱ AEO API");
+        setAeoData({ status: "error", message: e.message });
+      })
+      .finally(() => setLoadingAeo(false));
   }, [url]);
 
-  if (loading) {
+  // Show a simple loading indicator only while waiting for the first (SEO) data
+  if (loading && !seoData) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-2xl font-bold text-gray-900 mb-4">
-            Running SEO, AEO & GEO analysis...
-          </div>
-          <div className="text-gray-500">
-            This may take a minute.
-          </div>
-        </div>
+        <p className="text-gray-600 text-lg">Loading SEO report…</p>
       </div>
     );
   }
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-2xl font-bold text-red-600 mb-4">Analysis Failed</div>
-          <div className="text-gray-600">{error}</div>
-        </div>
-      </div>
-    );
-  }
-
-  return <ReportTabs seoData={seoData} geoData={geoData} aeoData={aeoData} url={url} />;
+  return (
+    <ReportTabs
+      seoData={seoData}
+      geoData={geoData}
+      aeoData={aeoData}
+      url={url}
+      loadingGeo={loadingGeo}
+      loadingAeo={loadingAeo}
+    />
+  );
 }
 
 export default function ReportPage() {
@@ -83,7 +86,7 @@ export default function ReportPage() {
     <Suspense
       fallback={
         <div className="min-h-screen bg-white flex items-center justify-center">
-          <p className="text-gray-500">Loading report...</p>
+          <p className="text-gray-600 text-lg">Loading report…</p>
         </div>
       }
     >
